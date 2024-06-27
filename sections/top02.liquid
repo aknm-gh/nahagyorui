@@ -1,25 +1,47 @@
- <!------------------------ バナースライド ---------------------->
+<section id="banner">
+  <div class="banner_bg">
+    <ul class="banner_slide">
+      {% for banner in section.blocks %}
+        <li>
+          <a href="{{ banner.settings.link }}">
+            <img src="{{ banner.settings.image | img_url: 'master' }}" alt="">
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
 
- <section id="banner">
-    <div class="banner_bg">
-      <ul class="banner_slide">
-        <li><a href=""><img src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/banner_01.png" alt=""></a></li>
-        <li><a href=""><img src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/banner_01.png" alt=""></a></li>
-        <li><a href=""><img src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/banner_01.png" alt=""></a></li>
-        <li><a href=""><img src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/banner_01.png" alt=""></a></li>
-        <li><a href=""><img src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/banner_01.png" alt=""></a></li>
-      </ul>
-    </div>
-  </section>
+{% schema %}
+{
+  "name": "Banner Section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Banner Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Banner Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Section",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
 
-  {% schema %}
-  {
-    "name": "top-page02",
-    "presets": [
-      {
-        "name": "top-page02"
-      }
-    ]
-  }
-  {% endschema %}
-  
+
+

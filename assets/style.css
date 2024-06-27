@@ -393,8 +393,13 @@ input[type=button]::focus {
 /*************************************************
 デフォルト調整
 *************************************************/
+.skip-to-content-link {
+  display: none;
+}
+
 .customer {
   padding-top: 140px !important;
+  padding-bottom: 100px !important;
 }
 
 .shopify-challenge__container {
@@ -448,6 +453,70 @@ input[type=button]::focus {
 /*************************************************
 ログイン
 *************************************************/
+.customer #login, .customer h1 {
+  font-size: 1.6rem;
+}
+
+.customer form {
+  margin-bottom: 4rem;
+}
+
+.customer button {
+  background-color: #285aa8;
+  border-radius: 5rem;
+}
+.customer button::after {
+  box-shadow: none;
+}
+
+/*************************************************
+カート
+*************************************************/
+cart-items {
+  background: none !important;
+  padding: 150px 0 50px !important;
+}
+cart-items .title-wrapper-with-link {
+  font-size: 1.6rem;
+}
+cart-items .title-wrapper-with-link a {
+  color: #285aa8;
+}
+cart-items .cart__items {
+  color: #1f1f1f;
+}
+
+.cart__footer-wrapper {
+  background: none !important;
+  padding-bottom: 50px;
+}
+.cart__footer-wrapper .color-scheme-1 {
+  background: none !important;
+}
+
+.cart__footer .cart__blocks small {
+  color: #1f1f1f;
+}
+
+.cart__ctas button {
+  background-color: #285aa8;
+  border-radius: 5rem;
+}
+.cart__ctas button::after {
+  box-shadow: none;
+}
+
+/*************************************************
+配送日時
+*************************************************/
+.ngc-note-attr-field label {
+  color: #1f1f1f;
+  margin-bottom: 10px;
+}
+.ngc-note-attr-field input {
+  background-color: #fff;
+}
+
 /*************************************************
 header
 *************************************************/

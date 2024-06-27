@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "sections": {
     "top01_g4gx97": {
@@ -7,6 +16,42 @@
     },
     "top02_EnpygY": {
       "type": "top02",
+      "blocks": {
+        "banner_dhcgmQ": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/banner_01.png",
+            "link": ""
+          }
+        },
+        "banner_AdQPtk": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/banner_01.png",
+            "link": ""
+          }
+        },
+        "banner_DzA3WR": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/banner_01.png",
+            "link": ""
+          }
+        },
+        "banner_TNfL8p": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/banner_01.png",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "banner_dhcgmQ",
+        "banner_AdQPtk",
+        "banner_DzA3WR",
+        "banner_TNfL8p"
+      ],
       "settings": {
       }
     },

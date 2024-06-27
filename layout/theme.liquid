@@ -226,12 +226,20 @@
             --variant-pills-shadow-blur-radius: {{ settings.variant_pills_shadow_blur }}px;
           }
 
-          
+          html {
+          box-sizing: border-box;
+          font-size: calc(var(--font-body-scale) * 62.5%);
+          height: 100%;
+        }
 
           *,
           *::before,
           *::after {
             box-sizing: inherit;
+          }
+
+          body{
+            font-size:1.6rem;
           }
 
 
@@ -242,6 +250,16 @@
 
     {% if template.name == 'cart' or template.name == 'search' or template.name == 'account' or template.name == 'addresses' or template.name == 'login' or template.name == 'order' or template.name == 'register' %}
       {{ 'base.css' | asset_url | stylesheet_tag }}
+      {% style %}
+      main {
+  position: relative;
+  z-index: 0;
+  background-image: url(https://cdn.shopify.com/s/files/1/0637/0174/5872/files/bg.png);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+      {% endstyle %}
       {% endif %}
 
     {{ 'reset.css' | asset_url | stylesheet_tag }}
