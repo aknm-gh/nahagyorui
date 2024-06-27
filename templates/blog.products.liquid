@@ -1,0 +1,53 @@
+  <!------------------------ 下層ファーストビュー ---------------------->
+  <section id="fv_under">
+    <img class="fv_deco_01" src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/under_fv_deco_01.png" alt="">
+    <div class="section_title">
+        <img src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/section_title2.png" alt="">
+        <h1>取扱商品</h1>
+        <span>LINE UP</span>
+    </div>
+    <img class="fv_deco_02" src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/under_fv_deco_02.png" alt="">
+</section>
+
+<!------------------------ ページ内リンク ---------------------->
+
+<section id="page_link">
+    <div class="section_inner_00 section_inner">
+        <a href="#">カテゴリ1</a>
+        <a href="#">カテゴリ2</a>
+        <a href="#">カテゴリ3</a>
+    </div>
+</section>
+
+ <!------------------------ 取扱商品一覧 ---------------------->
+ <section id="list">
+    <div class="section_inner">
+       
+
+        <ul class="product_list blog_products">
+            {% paginate blogs['products'].articles by 9 %}
+            {% for article in blogs['products'].articles %}
+            <li>
+
+                <a href="">
+                    {% if article.image %}
+                        <img src="{{ article.image | img_url: 'large' }}" alt="{{ article.title }}">
+                      {% endif %}
+                    <div class="blog_products_name">
+                        <p>{{ article.title }}</p>
+                        <button><img src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/b_products.svg" alt=""></button>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+        {% endpaginate %}
+        </ul>
+    
+
+    </div>
+</section>
+
+
+
+
+

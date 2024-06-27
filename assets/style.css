@@ -506,6 +506,14 @@ cart-items .cart__items {
   box-shadow: none;
 }
 
+.cart__warnings a {
+  background-color: #285aa8;
+  border-radius: 5rem;
+}
+.cart__warnings a::after {
+  box-shadow: none;
+}
+
 /*************************************************
 配送日時
 *************************************************/
@@ -2707,8 +2715,7 @@ navi
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(40, 90, 168, 0.9);
 }
 #about_02 .section_inner .modal-content {
   margin: 200px auto 30px;
@@ -2988,6 +2995,34 @@ navi
   #company .section_inner tbody tr td {
     width: 78%;
   }
+}
+#company .section_inner .contact_tel {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+#company .section_inner .contact_tel .section_title3 {
+  padding: 0;
+  margin-bottom: 55px;
+}
+#company .section_inner .contact_tel a {
+  width: fit-content;
+  margin: 0 auto 15px;
+  display: flex;
+  color: #285aa8;
+  text-align: center;
+  font-family: Futura;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 5.44px;
+}
+#company .section_inner .contact_tel p {
+  text-align: center;
+  color: #285aa8;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1.6px;
+  line-height: 1.6;
 }
 
 /*************************************************
@@ -3296,6 +3331,25 @@ navi
 }
 
 /*************************************************
+取扱商品
+*************************************************/
+.blog_products li a {
+  display: block;
+}
+.blog_products li a img {
+  max-width: 228px;
+  max-height: 220px;
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+.blog_products li a .blog_products_name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*************************************************
 商品一覧
 *************************************************/
 .list_page_link .section_inner_00 {
@@ -3371,6 +3425,7 @@ navi
 }
 #list .section_inner .product_list li a .product_img img {
   display: block;
+  width: 100%;
 }
 #list .section_inner .product_list li a .product_category {
   display: block;
@@ -3811,6 +3866,7 @@ navi
 }
 #recommend .section_inner .product_list li a .product_img img {
   display: block;
+  width: 100%;
 }
 #recommend .section_inner .product_list li a .product_category {
   display: block;
