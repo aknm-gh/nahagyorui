@@ -1,53 +1,231 @@
-  <!------------------------ 下層ファーストビュー ---------------------->
-  <section id="fv_under">
-    <img class="fv_deco_01" src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/under_fv_deco_01.png" alt="">
-    <div class="section_title">
-        <img src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/section_title2.png" alt="">
-        <h1>取扱商品</h1>
-        <span>LINE UP</span>
-    </div>
-    <img class="fv_deco_02" src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/under_fv_deco_02.png" alt="">
+<!-- ---------------------- 下層ファーストビュー -------------------- -->
+<section id="fv_under">
+  <img class="fv_deco_01" src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/under_fv_deco_01.png" alt="">
+  <div class="section_title">
+    <img src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/section_title2.png" alt="">
+    <h1>取扱商品</h1>
+    <span>LINE UP</span>
+  </div>
+  <img class="fv_deco_02" src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/under_fv_deco_02.png" alt="">
 </section>
 
-<!------------------------ ページ内リンク ---------------------->
+<!-- ---------------------- ページ内リンク -------------------- -->
 
 <section id="page_link">
     <div class="section_inner_00 section_inner">
-        <a href="#">カテゴリ1</a>
-        <a href="#">カテゴリ2</a>
-        <a href="#">カテゴリ3</a>
-    </div>
-</section>
-
- <!------------------------ 取扱商品一覧 ---------------------->
- <section id="list">
-    <div class="section_inner">
-       
-
-        <ul class="product_list blog_products">
-            {% paginate blogs['products'].articles by 9 %}
-            {% for article in blogs['products'].articles %}
-            <li>
-
-                <a href="">
-                    {% if article.image %}
-                        <img src="{{ article.image | img_url: 'large' }}" alt="{{ article.title }}">
-                      {% endif %}
-                    <div class="blog_products_name">
-                        <p>{{ article.title }}</p>
-                        <button><img src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/b_products.svg" alt=""></button>
-                    </div>
-                </a>
-            </li>
+      {% assign tags = '' %}
+      {% for article in blogs['products'].articles %}
+        {% for tag in article.tags %}
+          {% unless tags contains tag %}
+            <a href="javascript:void(0);" class="tag-link" data-tag="{{ tag }}">{{ tag }}</a>
+            {% capture tags %}{{ tags }},{{ tag }}{% endcapture %}
+          {% endunless %}
         {% endfor %}
-        {% endpaginate %}
-        </ul>
-    
-
+      {% endfor %}
     </div>
-</section>
+  </section>
 
+<!-- ---------------------- 取扱商品一覧 -------------------- -->
 
+<section id="list" class="blog_products_list">
+    <div class="section_inner">
+      <ul class="product_list blog_products">
+        {% paginate blogs.products.articles by 9 %}
+          {% for article in blogs.products.articles %}
+            <li class="item-card02 modal" data-tags="{{ article.tags | join: ' ' }}">
+              <a href="#modaal-box-{{ forloop.index }}" class="modaal-btn">
+                {% if article.image %}
+                  <img src="{{ article.image | img_url: 'large' }}" alt="{{ article.title }}">
+                {% endif %}
+                <div class="blog_products_name">
+                  <p>{{ article.title }}</p>
+                  <button>
+                    <img src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/b_products.svg" alt="">
+                  </button>
+                </div>
+              </a>
+              <div id="modaal-box-{{ forloop.index }}" style="display:none;">
+                <div class="h-item_wrap p-top_mv">
+                  <div class="h-merchandise-detail">
+                    <div class="h-merchandise__img-content">
+                      <div class="h-merchandise__img-wrapper">
+                        <div class="swiper-container swiper04" style="overflow: hidden;">
+                          <div class="swiper-wrapper">
+                            {% if article.metafields.custom._products_img %}
+                              {% assign images = article.metafields.custom._products_img.value %}
+                              {% for image in images %}
+                                <div class="swiper-slide">
+                                  <div class="h-img-wrapper obj-fit">
+                                    <img src="{{ image | img_url: '483x483' }}" alt="{{ article.title }}">
+                                  </div>
+                                </div>
+                              {% endfor %}
+                            {% endif %}
+                          </div>
+                          <!-- /.swiper-wrapper -->
+                        </div>
+                        <!-- /.swiper04 -->
+  
+                        <div class="thumb-list">
+                          {% if article.metafields.custom._products_img %}
+                            {% for image in images %}
+                              <div class="thumb-item">
+                                <a
+                                  class="thumb-link obj-fit"
+                                  href="javascript:void(0);"
+                                  onclick="thumbnail('{{ forloop.index }}')"
+                                >
+                                  <img src="{{ image | img_url }}" alt="">
+                                </a>
+                              </div>
+                            {% endfor %}
+                          {% endif %}
+                        </div>
+                        <!-- /.thumb-list -->
+                      </div>
+                      <!-- /.w-merchandise__img-wrapper -->
+                    </div>
+                    <!-- w-merchandise__img-content -->
+                  </div>
+                  <!-- "p-merchandise-detail -->
+                  <div class="w-item_wrapper">
+                    <h2 class="w-item-name">{{ article.title }}</h2>
+                    <p class="w-item-detail">
+                      【商品説明】<br>
+                      {{ article.excerpt_or_content | strip_html | truncatewords: 30 }}
+                    </p>
+                  </div>
+                </div>
+                <!-- w-item_wrap p-top_mv -->
+              </div>
+              <!-- modaal-box -->
+            </li><!-- /.item-card -->
+          {% endfor %}
+        {% endpaginate %}
+      </ul>
+      <a class="btn_02" href="/blogs/products">
+        全ての取扱商品を見る
+      </a>
+    </div>
+  </section>
+  
 
+<!-- 必要なスクリプトを読み込む -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modaal/0.4.4/js/modaal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modaal/0.4.4/css/modaal.min.css">
+<script>
+  const swiper04 = new Swiper('.swiper04', {
+    loop: true,
+  });
+  function thumbnail(index) {
+    swiper04.slideTo(index);
+  }
+  // モーダルの初期化
+  $(document).ready(function () {
+    $('.modaal-btn').modaal({
+      background: '#FEF8F1',
+      overlay_opacity: '1',
+    });
+  });
+</script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // モーダルの初期化
+    $('.modaal-btn').modaal({
+      background: '#FEF8F1',
+      overlay_opacity: '1',
+      after_open: function () {
+        // モーダルが開いた後にSwiperを初期化する
+        const swiperInstances = document.querySelectorAll('.swiper04');
+        swiperInstances.forEach(function (swiperInstance) {
+          new Swiper(swiperInstance, {
+            loop: true,
+          });
+        });
+      },
+    });
 
+    // サムネイルクリック時の処理
+    window.thumbnail = function (index) {
+      const swiperInstances = document.querySelectorAll('.swiper04');
+      swiperInstances.forEach(function (swiperInstance) {
+        swiperInstance.swiper.slideToLoop(index - 1); //SwiperのインスタンスでslideToLoopを使用
+      });
+    };
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // 初期表示アイテム数
+    let itemsToShow = 20;
+    const items = document.querySelectorAll('.item-card02');
+    const totalItems = items.length;
+    let visibleItems = itemsToShow;
+
+    console.log(`Total items: ${totalItems}`); // デバッグ用ログ
+
+    // 最初に表示するアイテム数を制御
+    items.forEach((item, index) => {
+      if (index < itemsToShow) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    // // 全てのアイテムが初めから表示されている場合は、ボタンを非表示にする
+    // if (totalItems <= itemsToShow) {
+    //   document.getElementById('load-more03').style.display = 'none';
+    // }
+
+    // 全てのアイテムが初めから表示されている場合は、ボタンを非表示にする
+    const loadMoreButton = document.getElementById('load-more03');
+    if (totalItems <= itemsToShow) {
+      loadMoreButton.style.display = 'none';
+    }
+
+    // 「さらに表示する」ボタンのクリックイベント
+    // document.getElementById('load-more03').addEventListener('click', function() {
+    // 「さらに表示する」ボタンのクリックイベント
+    loadMoreButton.addEventListener('click', function () {
+      console.log('Load more button clicked'); // デバッグ用ログ
+
+      // 次のitemsToShow個のアイテムを表示する
+      const nextToShow = visibleItems + itemsToShow;
+      for (let i = visibleItems; i < nextToShow; i++) {
+        if (i < totalItems) {
+          items[i].style.display = 'block';
+        }
+      }
+      visibleItems += itemsToShow;
+
+      // もし全てのアイテムが表示されたら、ボタンを隠す
+      if (visibleItems >= totalItems) {
+        // document.getElementById('load-more03').style.display = 'none';
+        loadMoreButton.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var tagLinks = document.querySelectorAll('.tag-link');
+      var articles = document.querySelectorAll('.item-card02.modal');
+  
+      tagLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          var tag = this.getAttribute('data-tag');
+  
+          articles.forEach(function(article) {
+            if (article.getAttribute('data-tags').includes(tag)) {
+              article.style.display = 'block';
+            } else {
+              article.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
