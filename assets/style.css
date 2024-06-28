@@ -1805,7 +1805,7 @@ navi
   background-size: cover;
   mix-blend-mode: multiply;
   width: 100%;
-  height: 230px;
+  height: 100%;
 }
 @media screen and (max-width: 599px) {
   #page_link::before {
@@ -1817,9 +1817,8 @@ navi
   max-width: 860px;
   width: 100%;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 @media screen and (max-width: 599px) {
   #page_link .section_inner {
@@ -1828,6 +1827,7 @@ navi
   }
 }
 #page_link .section_inner a {
+  margin-bottom: 15px;
   position: relative;
   display: flex;
   align-items: center;
@@ -1869,7 +1869,7 @@ navi
   margin: 0 auto;
   width: 100%;
   max-width: 1240px;
-  padding: 100px 0;
+  padding: 100px 0 60px;
   margin-bottom: 100px;
 }
 @media screen and (max-width: 599px) {
@@ -3337,11 +3337,6 @@ navi
   padding: 0px 20px 100px !important;
 }
 
-@media screen and (max-width: 599px) {
-  .blog_products li {
-    width: calc(50% - 1rem) !important;
-  }
-}
 .blog_products li a {
   display: block;
 }
@@ -3551,9 +3546,6 @@ navi
   }
 }
 
-.blog_products_list .item-card02 {
-  width: calc(20% - 2.4rem);
-}
 .blog_products_list .item-card02 a:hover {
   opacity: 0.6;
   transition: all 0.3s;
@@ -3611,10 +3603,15 @@ navi
   max-width: 1240px;
 }
 #list .section_inner .product_list {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 35px;
+}
+@media screen and (max-width: 599px) {
+  #list .section_inner .product_list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 25px;
+  }
 }
 #list .section_inner .product_list li {
   margin-bottom: 70px;
@@ -4060,10 +4057,15 @@ navi
   }
 }
 #recommend .section_inner .product_list {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 35px;
+}
+@media screen and (max-width: 599px) {
+  #recommend .section_inner .product_list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 25px;
+  }
 }
 #recommend .section_inner .product_list li {
   margin-bottom: 70px;

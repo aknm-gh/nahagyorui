@@ -13,11 +13,15 @@
 
 <section id="page_link" class="list_page_link">
     <div class="section_inner_00 section_inner">
-        <a href="/collections/squid">ソデイカ</a>
-        <a href="/collections/tuna">マグロ・カツオ</a>
-        <a href="/collections/other">その他加工品</a>
+        {% assign exclude_collections = "tax,all" | split: ',' %}
+        {% for collection in collections %}
+            {% unless exclude_collections contains collection.handle %}
+                <a href="{{ collection.url }}">{{ collection.title }}</a>
+            {% endunless %}
+        {% endfor %}
     </div>
 </section>
+
 
 <!------------------------ 商品一覧 ---------------------->
 <section id="list">
@@ -50,7 +54,7 @@
             {% endfor %}
         </ul>
         <a class="btn_02" href="/blogs/products">
-            全ての商品を見る
+            全ての取扱商品を見る
           </a>
     </div>
 </section>

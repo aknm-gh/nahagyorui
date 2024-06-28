@@ -1,18 +1,21 @@
 
-<section id="item_slide">
-    <ul class="item_slide">
-        <li>
-            {% if product.metafields.custom._tokushu_img != empty %}
-                {% assign image_url = product.metafields.custom._tokushu_img | img_url: 'master' %}
-                <img src="{{ image_url }}" alt="">
-            {% endif %}
-
-            {% if product.metafields.custom.tokushu_text != empty %}
-                <p>{{ product.metafields.custom.tokushu_text }}</p>
-            {% endif %}
-        </li>
-    </ul>
-</section>
+{% if product.metafields.custom._tokushu_img != blank or product.metafields.custom.tokushu_text != blank %}
+  <section id="item_slide">
+      <ul class="item_slide">
+          <li>
+              {% if product.metaffields.custom._tokushu_img != blank %}
+                  {% assign image_url = product.metafields.custom._tokushu_img | img_url: 'master' %}
+                  <img src="{{ image_url }}" alt="">
+              {% endif %}
+  
+              {% if product.metafields.custom.tokushu_text != blank %}
+                  <p>{{ product.metafields.custom.tokushu_text }}</p>
+              {% endif %}
+          </li>
+      </ul>
+  </section>
+  {% endif %}
+  
 {% schema %}
 {
   "name": "itemslide",
