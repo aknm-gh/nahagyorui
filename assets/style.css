@@ -136,7 +136,7 @@ main {
     display: block;
     position: fixed;
     right: 0;
-    bottom: 90px;
+    bottom: 15px;
     z-index: 900;
   }
   .follow_sp a {
@@ -305,12 +305,15 @@ input[type=button]::focus {
 /*************************************************
 アニメーション
 *************************************************/
+.fadeUpTrigger {
+  opacity: 0;
+}
+
 .fadeUp {
   transform: translateY(0);
   animation-name: fadeUpAnime;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
-  opacity: 0;
 }
 @media screen and (max-width: 599px) {
   .fadeUp {
@@ -723,6 +726,7 @@ footer::before {
 footer .footer_wrap {
   overflow: hidden;
   position: relative;
+  background: #285aa8;
 }
 
 .footer_pc {
@@ -822,6 +826,7 @@ footer .footer_wrap {
     margin-bottom: 50px;
   }
   .footer_sp .footer_sp_link_02 li {
+    font-size: 14px;
     margin-bottom: 20px;
   }
   .footer_sp .footer_sp_link_02 li a {
@@ -833,6 +838,7 @@ footer .footer_wrap {
     margin-right: 10px;
   }
   .footer_sp .footer_sp_address p {
+    font-size: 14px;
     line-height: 1.5;
     margin-bottom: 15px;
   }
@@ -851,11 +857,10 @@ small {
   bottom: 0px;
   left: -50px;
   display: block;
-  width: 40.2777777778vw;
-  height: 27.0833333333vw;
+  width: 580px;
+  height: 427px;
   object-fit: contain;
   mix-blend-mode: soft-light;
-  z-index: -1;
 }
 @media screen and (max-width: 599px) {
   .deco_05 {
@@ -870,13 +875,12 @@ small {
   .deco_05_sp {
     display: block;
     position: absolute;
-    width: 148.7179487179vw;
-    height: 143.3333333333vw;
+    width: 370px;
+    height: 475px;
     object-fit: contain;
     mix-blend-mode: soft-light;
-    left: -75.1282051282vw;
-    top: -50px;
-    z-index: -1;
+    left: -51.2820512821vw;
+    top: -35px;
   }
 }
 
@@ -886,9 +890,8 @@ small {
   right: 0;
   bottom: 0;
   mix-blend-mode: overlay;
-  width: 26.6666666667vw;
-  height: 27.7777777778vw;
-  z-index: -1;
+  width: 384px;
+  height: 397px;
 }
 @media screen and (max-width: 599px) {
   .deco_06 {
@@ -1793,6 +1796,16 @@ navi
 /*************************************************
 ページ内リンク
 *************************************************/
+.about_link .section_inner {
+  display: flex !important;
+  justify-content: space-between;
+}
+@media screen and (max-width: 599px) {
+  .about_link .section_inner {
+    display: block !important;
+  }
+}
+
 #page_link {
   position: relative;
 }
