@@ -727,6 +727,7 @@ footer .footer_wrap {
   overflow: hidden;
   position: relative;
   background: #285aa8;
+  z-index: 1;
 }
 
 .footer_pc {
@@ -892,6 +893,7 @@ small {
   mix-blend-mode: overlay;
   width: 384px;
   height: 397px;
+  z-index: -1;
 }
 @media screen and (max-width: 599px) {
   .deco_06 {
