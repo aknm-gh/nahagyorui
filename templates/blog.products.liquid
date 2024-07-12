@@ -12,19 +12,36 @@
 <!-- ---------------------- ページ内リンク -------------------- -->
 
 <section id="page_link">
-    <div class="section_inner_00 section_inner">
-      {% assign tags = '' %}
-      {% for article in blogs['products'].articles %}
-        {% for tag in article.tags %}
-          {% unless tags contains tag %}
-            <a href="javascript:void(0);" class="tag-link" data-tag="{{ tag }}">{{ tag }}</a>
-            {% capture tags %}{{ tags }},{{ tag }}{% endcapture %}
-          {% endunless %}
-        {% endfor %}
+  <div class="section_inner_00 section_inner">
+    {% assign tags = '' %}
+    {% for article in blogs['products'].articles %}
+      {% for tag in article.tags %}
+        {% unless tags contains tag %}
+          <a href="javascript:void(0);" class="tag-link" data-tag="{{ tag }}">{{ tag }}</a>
+          {% capture tags %}{{ tags }},{{ tag }}{% endcapture %}
+        {% endunless %}
       {% endfor %}
+    {% endfor %}
+  </div>
+</section>
+
+  <section id="contact">
+    <div class="section_inner">
+      <div class="contact_text_01">
+        <p>ロットでの卸希望向けの販売も行っています。<br>
+      ご希望の方は、下記お電話または <a href="/pages/contact">メールフォーム</a>にてお問い合わせください。</p>
+    </div>
+
+    <div class="contact_tel">
+      <div class="section_title3">
+          <h2>お電話から</h2>
+      </div>
+      <a href="tel:098-994-6277"><img src="https://cdn.shopify.com/s/files/1/0637/0174/5872/files/contact_tel.svg" alt="">098-994-6277</a>
+      <p class="is_pc">■営業時間：8:00〜17:00 | ■休日：水曜日・日曜・祝祭日</p>
+      <p class="is_sp">■営業時間：8:00〜17:00<br>■休日：水曜日・日曜・祝祭日</p>
+  </div>
     </div>
   </section>
-
 <!-- ---------------------- 取扱商品一覧 -------------------- -->
 
 <section id="list" class="blog_products_list">
@@ -210,22 +227,31 @@
 </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
       var tagLinks = document.querySelectorAll('.tag-link');
       var articles = document.querySelectorAll('.item-card02.modal');
-  
+      var allProductsBtn = document.getElementById('all-products-btn');
+
       tagLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
-          var tag = this.getAttribute('data-tag');
-  
-          articles.forEach(function(article) {
-            if (article.getAttribute('data-tags').includes(tag)) {
-              article.style.display = 'block';
-            } else {
-              article.style.display = 'none';
-            }
+          link.addEventListener('click', function() {
+              var tag = this.getAttribute('data-tag');
+              var tagSelected = false;
+
+              articles.forEach(function(article) {
+                  if (article.getAttribute('data-tags').includes(tag)) {
+                      article.style.display = 'block';
+                      tagSelected = true;
+                  } else {
+                      article.style.display = 'none';
+                  }
+              });
+
+              if (tagSelected) {
+                  allProductsBtn.style.display = 'block';
+              } else {
+                  allProductsBtn.style.display = 'none';
+              }
           });
-        });
       });
-    });
-  </script>
+  });
+</script>

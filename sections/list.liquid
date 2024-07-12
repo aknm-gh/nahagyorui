@@ -11,7 +11,7 @@
 
 <!------------------------ ページ内リンク ---------------------->
 
-<section id="page_link" class="list_page_link">
+{% comment %} <section id="page_link" class="list_page_link">
     <div class="section_inner_00 section_inner">
         {% assign exclude_collections = "tax,all" | split: ',' %}
         {% for collection in collections %}
@@ -20,7 +20,16 @@
             {% endunless %}
         {% endfor %}
     </div>
+</section> {% endcomment %}
+
+<section id="page_link" class="list_page_link">
+    <div class="section_inner_00 section_inner">
+            <a href="/collections/squid">ソデイカ(セーイカ)</a>
+            <a href="/collections/tuna">マグロ</a>
+            <a href="/collections/other">その他</a>
+    </div>
 </section>
+
 
 
 <!------------------------ 商品一覧 ---------------------->
@@ -53,9 +62,12 @@
                 </li>
             {% endfor %}
         </ul>
-        <a class="btn_02" href="/blogs/products">
-            全ての取扱商品を見る
-          </a>
+        {% if template.name != 'collection' or collection.handle != 'all' %}
+            <a class="btn_02" href="/collections/all">
+                全ての商品を見る
+            </a>
+        {% endif %}
+        
     </div>
 </section>
 

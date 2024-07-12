@@ -2665,7 +2665,10 @@ navi
 }
 #about_02 .section_inner .kojo_wrap .kojo_flex .kojo_inner img {
   display: block;
+  max-width: 268px;
+  width: 100%;
   margin-bottom: 10px;
+  height: auto;
 }
 @media screen and (max-width: 599px) {
   #about_02 .section_inner .kojo_wrap .kojo_flex .kojo_inner img {
@@ -2736,7 +2739,7 @@ navi
   margin: 200px auto 30px;
   display: block;
   width: 100%;
-  max-width: 600px;
+  max-width: 536px;
 }
 #about_02 .section_inner .close {
   position: absolute;
@@ -3661,6 +3664,8 @@ navi
 #list .section_inner .product_list li a .product_img img {
   display: block;
   width: 100%;
+  height: 220px;
+  object-fit: cover;
 }
 #list .section_inner .product_list li a .product_category {
   display: block;
@@ -4110,6 +4115,8 @@ navi
 #recommend .section_inner .product_list li a .product_img img {
   display: block;
   width: 100%;
+  height: 220px;
+  object-fit: cover;
 }
 #recommend .section_inner .product_list li a .product_category {
   display: block;
